@@ -4,8 +4,6 @@ import time
 from conftest import driver, url
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium import webdriver
 from exception_wrappers import *
 
 
@@ -46,24 +44,3 @@ def test_related_products(driver, url):
 
     product_image = driver.find_element(by=By.CSS_SELECTOR, value='#content > div:nth-child(1) > div.col-sm-8 > ul.thumbnails > li:nth-child(1) > a')
     assert product_image.get_attribute('href').endswith('.jpg')
-
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_product_name(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_add_to_cart(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_related_products(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_wish_list(driver, url)

@@ -6,8 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from exception_wrappers import *
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import Select
 
 
 
@@ -42,14 +40,3 @@ def test_login_fields(driver, url):
     except TimeoutException:
         warning = wait((By.CSS_SELECTOR, '#account-login > div.alert.alert-danger.alert-dismissible'), driver)
         assert warning.text == 'Warning: No match for E-Mail Address and/or Password.'
-
-from selenium import webdriver
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_login_button(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_login_fields(driver, url)

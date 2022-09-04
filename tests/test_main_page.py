@@ -36,15 +36,15 @@ def test_navbar_elements(driver, url):
     assert left_column_software_ref.get_attribute('href').startswith(url+'/software')
     assert 'active' in left_column_software_ref.get_attribute('class')
     driver.back()
-    wait((By.CSS_SELECTOR, "#slideshow0 > div"), driver)
-    
+    navbar = driver.find_element(by=By.CSS_SELECTOR, value=".collapse.navbar-collapse>.nav.navbar-nav")
+    navbar_elems = navbar.find_elements(by=By.CSS_SELECTOR, value=".nav.navbar-nav > li")
+
+    wait((By.CSS_SELECTOR, "#slideshow0"), driver)
     navbar_elems[5].click()
     left_column_phones_pdas_ref = wait((By.XPATH, '//*[@id="column-left"]/div[1]/a[6]'), driver)
     assert left_column_phones_pdas_ref.text.startswith('Phones & PDAs')
     assert left_column_phones_pdas_ref.get_attribute('href').startswith(url+'/smartphone')
     assert 'active' in left_column_phones_pdas_ref.get_attribute('class')
-    driver.back()
-    wait((By.CSS_SELECTOR, "#slideshow0 > div"), driver)
 
 
 def test_featured_elements(driver, url):
@@ -58,7 +58,7 @@ def test_featured_elements(driver, url):
         assert add_to_cart_button.text=='Add to Cart'
         driver.back()
         wait((By.CSS_SELECTOR, '#content > div.row > div.product-layout'), driver)
-        wish_list_add_button = elem.find_element(by=By.CSS_SELECTOR, value='div > div.button-group > button:nth-child(2)')
+        wish_list_add_button = driver.find_element(by=By.CSS_SELECTOR, value=f'#content > div.row > div:nth-child({i+1}) > div > div.button-group > button:nth-child(2)')
         wish_list_add_button.click()
         alert = wait((By.CSS_SELECTOR, '#common-home > div.alert.alert-success.alert-dismissible'), driver)
         
@@ -77,22 +77,3 @@ def test_basket(driver, url):
         assert notification.text == 'Your shopping cart is empty!'
 
 
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_home_button(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_navbar_elements(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_featured_elements(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_basket(driver, url)

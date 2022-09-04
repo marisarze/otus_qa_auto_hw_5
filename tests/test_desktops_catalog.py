@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from exception_wrappers import *
 from selenium.webdriver.support.ui import Select
-from selenium import webdriver
 
 
 def test_desktop_button(driver, url):
@@ -47,14 +46,3 @@ def test_sorting_and_total(driver, url):
     total_raw = total_raw[1]
     total = int(total_raw.replace(',', '').replace('.', ''))
     assert price_sum == total
-
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_desktop_button(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_sorting_and_total(driver, url)
