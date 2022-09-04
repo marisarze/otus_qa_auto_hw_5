@@ -51,7 +51,6 @@ def test_main(driver, url):
     assert len(featured_elems)==4
     for i, elem in enumerate(featured_elems):
         ref_image = wait((By.CSS_SELECTOR, 'div > div.image > a'), driver)
-        #time.sleep(1)
         ActionChains(driver).move_to_element(ref_image).click().perform()
         add_to_cart_button = wait((By.CSS_SELECTOR, '#button-cart'), driver)
         assert add_to_cart_button.text=='Add to Cart'
@@ -65,38 +64,6 @@ def test_main(driver, url):
         alert_close_button = driver.find_element(by=By.CSS_SELECTOR, value='#common-home > div.alert.alert-success.alert-dismissible > button')
         alert_close_button.click()
         wait_not((By.CSS_SELECTOR, '#common-home > div.alert.alert-success.alert-dismissible > button'), driver)
-        
-        
-
-    # carousel_items = driver.find_elements(by=By.CSS_SELECTOR, value='#carousel0 > div > div')
-
-    # def carousel_rounded(locator, old_items):
-
-    #     def utility_function(driver):
-    #         new_items = driver.find_elements(*locator)
-    #         assert len(new_items)==len(old_items)
-    #         for i, old_item in enumerate(old_items):
-    #             if 'swiper-slide-active' in old_item.get_attribute('class'):
-    #                 old_index = int(old_item.get_attribute('data-swiper-slide-index'))
-    #         for i, new_item in enumerate(new_items):
-    #             if 'swiper-slide-active' in new_item.get_attribute('class'):
-    #                 new_index = int(new_item.get_attribute('data-swiper-slide-index'))
-    #         print(old_index, new_index)
-    #         if new_index == (old_index+1) % 10:
-    #             return True
-    #         return False
-        
-    #     return utility_function
-
-
-    #carousel_right_button = driver.find_element(by=By.CSS_SELECTOR, value='#content > div.carousel.swiper-viewport > div.swiper-pager > div.swiper-button-next')
-    #carousel_element_buttons = driver.find_elements(by=By.CSS_SELECTOR, value='#content > div.carousel.swiper-viewport > div.swiper-pagination.carousel0.swiper-pagination-clickable.swiper-pagination-bullets > span')
-    #carousel_right_button.click()
-    # for i, button in enumerate(carousel_element_buttons):
-    #     if 'swiper-pagination-bullet-active' in button.get_attribute('class'):
-    #         carousel_element_buttons[(i+1)%len(carousel_element_buttons)].click()
-    #         break
-    # wait((By.CSS_SELECTOR, '#carousel0 > div > div'), driver, carousel_items, method=carousel_rounded)
 
     basket_button = driver.find_element(by=By.CSS_SELECTOR, value='#cart > button')
     if basket_button.text=="0 item(s) - $0.00":
