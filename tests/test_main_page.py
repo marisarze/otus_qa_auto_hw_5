@@ -1,5 +1,4 @@
 import pytest
-import time
 from conftest import driver, url
 from selenium.webdriver.common.by import By
 from exception_wrappers import *
