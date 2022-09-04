@@ -18,7 +18,7 @@ def wait_not(locator, driver, *args, method=EC.visibility_of_element_located, ti
         return WebDriverWait(driver, timeout).until_not(method(locator, *args))
     except TimeoutException:
         if screenshot:
-            driver.save_screenshot("{}.png".format(driver.session_id+str(time.time)))
+            driver.save_screenshot("{}.png".format(driver.session_id))
         raise AssertionError(f"Didn't wait: {method.__name__}")
 
 

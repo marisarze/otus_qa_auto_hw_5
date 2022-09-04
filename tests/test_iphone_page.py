@@ -1,6 +1,5 @@
 from logging import addLevelName
 import pytest
-import time
 from conftest import driver, url
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC

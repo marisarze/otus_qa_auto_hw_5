@@ -1,13 +1,9 @@
-from logging import addLevelName
 import pytest
-import time
 from conftest import driver, url
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from exception_wrappers import *
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import Select
 
 def test_register_button(driver, url):
     driver.get(url=url)
@@ -54,7 +50,6 @@ def test_registration(driver, url):
 
     privacy_policy_check = driver.find_element(by=By.CSS_SELECTOR, value='#content > form > div > div > input[type=checkbox]:nth-child(2)')
     privacy_policy_check.click()
-    time.sleep(1)
 
     continue_button = driver.find_element(by=By.CSS_SELECTOR, value='#content > form > div > div > input.btn.btn-primary')
     continue_button.click()
@@ -64,15 +59,4 @@ def test_registration(driver, url):
     except TimeoutException:
         warning = wait((By.CSS_SELECTOR, '#account-register > div.alert.alert-danger.alert-dismissible'), driver)
         assert warning.text == 'Warning: E-Mail Address is already registered!'
-
-# from selenium import webdriver
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_register_button(driver, url)
-
-# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
-# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
-# url = r"http://192.168.0.102:8081"
-# test_registration(driver, url)
 
