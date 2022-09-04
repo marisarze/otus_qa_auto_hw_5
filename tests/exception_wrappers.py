@@ -10,7 +10,6 @@ def wait(locator, driver, *args, method=EC.visibility_of_element_located, timeou
     except TimeoutException:
         if screenshot:
             driver.save_screenshot("{}.png".format(driver.session_id+str(time.time)))
-        #driver.close()
         raise AssertionError(f"Didn't wait: {method.__name__}")
 
 
@@ -20,7 +19,6 @@ def wait_not(locator, driver, *args, method=EC.visibility_of_element_located, ti
     except TimeoutException:
         if screenshot:
             driver.save_screenshot("{}.png".format(driver.session_id+str(time.time)))
-        #driver.close()
         raise AssertionError(f"Didn't wait: {method.__name__}")
 
 
@@ -28,5 +26,4 @@ def wait_title(title, driver, timeout=3):
     try:
         WebDriverWait(driver, timeout).until(EC.title_is(title))
     except TimeoutException:
-        driver.close()
         raise AssertionError(f"Expected to get the title {title} but it is {driver.title}")
