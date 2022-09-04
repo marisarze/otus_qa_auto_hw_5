@@ -41,3 +41,28 @@ def driver(request):
     yield target
     target.close()
 
+
+# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
+# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
+# url = r"http://192.168.0.102:8081"
+# test_main(driver, url)
+
+# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
+# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
+# url = r"http://192.168.0.102:8081"
+# test_iphone_page(driver, url)
+
+# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
+# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
+# url = r"http://192.168.0.102:8081"
+# test_register_page(driver, url)
+
+# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
+# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
+# url = r"http://192.168.0.102:8081"
+# test_login_page(driver, url)
+
+# driver_folder = r"C:\Users\marisarze\Downloads\browsers"
+# driver = webdriver.Chrome(executable_path=driver_folder+'/chromedriver.exe')
+# url = r"http://192.168.0.102:8081"
+# test_desktops_catalog(driver, url)

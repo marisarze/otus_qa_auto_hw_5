@@ -2,14 +2,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException
-import time
+
 
 def wait(locator, driver, *args, method=EC.visibility_of_element_located, timeout=5, screenshot=True):
     try:
         return WebDriverWait(driver, timeout).until(method(locator, *args))
     except TimeoutException:
         if screenshot:
-            driver.save_screenshot("{}.png".format(driver.session_id+str(time.time)))
+            driver.save_screenshot("{}.png".format(driver.session_id))
         raise AssertionError(f"Didn't wait: {method.__name__}")
 
 
